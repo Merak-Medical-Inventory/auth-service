@@ -18,7 +18,7 @@ export const login = async (req : Request , res : Response , next: NextFunction)
     if (!data) throw new ErrorHandler(400, 'WRONG_USER_PASSWORD');
     const { password: hashPass } = data;
     const cleanData = omit(get(data, '_doc'), ['password', 'isEnabled', 'createdAt', 'updatedAt'])
-    const dataToSign = omit(get(data, '_doc'), ['password', 'isEnabled', 'createdAt', 'updatedAt', 'albums', 'fav_photos'])
+    const dataToSign = omit(get(data, '_doc'), ['password', 'isEnabled', 'createdAt', 'updatedAt'])
     const valid = await bcrypt.compare(password, hashPass);
     if (!valid) throw new ErrorHandler(400, 'WRONG_USER_PASSWORD');
     const jwtInfo = await jwtSign(dataToSign)
