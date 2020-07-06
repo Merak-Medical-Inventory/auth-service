@@ -1,4 +1,4 @@
-import Joi from '@hapi/Joi';
+import Joi from '@hapi/joi';
 
 export const createUserSchema = Joi.object().keys({
     username: Joi.string().required(),
