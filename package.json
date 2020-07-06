@@ -45,7 +45,11 @@
     "pg": "^8.2.1",
     "reflect-metadata": "^0.1.13",
     "ts-loader": "^7.0.5",
+<<<<<<< HEAD
     "typeorm": "^0.2.25",
+=======
+    "tslib": "^2.0.0",
+>>>>>>> efe438a5ca78c002079a3665ae8bb0a4a4815b67
     "winston": "^3.2.1"
   },
   "devDependencies": {
