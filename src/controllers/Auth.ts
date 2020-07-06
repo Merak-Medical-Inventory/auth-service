@@ -9,20 +9,20 @@ import { jwtSign,jwtVerify } from '@helpers/jwt'
 import { findUserSvc } from '@services/user'
 
 export const login = async (req : Request , res : Response , next: NextFunction) =>{
-  const { email, password } = req.body;
+  const { username, password } = req.body;
   try{
-    const criteria = { 
-      email
-    }
-    const data = await findUserSvc(criteria);
+    const data = await findUserSvc(username);
     if (!data) throw new ErrorHandler(400, 'WRONG_USER_PASSWORD');
-    const { password: hashPass } = data;
-    const cleanData = omit(get(data, '_doc'), ['password', 'isEnabled', 'createdAt', 'updatedAt'])
-    const dataToSign = omit(get(data, '_doc'), ['password', 'isEnabled', 'createdAt', 'updatedAt'])
+    const hashPass = data.password;
     const valid = await bcrypt.compare(password, hashPass);
     if (!valid) throw new ErrorHandler(400, 'WRONG_USER_PASSWORD');
-    const jwtInfo = await jwtSign(dataToSign)
-    handleSuccess(201, 'LOGIN SUCCESS', res, next, { ...cleanData, token: jwtInfo });
+    const response = {
+      id : data.id,
+      name : data.name,
+      last_name : data.last_name 
+    } 
+    const jwtInfo = await jwtSign(response)
+    handleSuccess(201, 'LOGIN SUCCESS', res, next, { response, token: jwtInfo });
   }catch (e){
     next(e);
   }

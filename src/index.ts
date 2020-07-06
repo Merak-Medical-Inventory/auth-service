@@ -1,4 +1,6 @@
 import './LoadEnv'; // Must be the first import
+import "reflect-metadata";
+import {createConnection} from "typeorm";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import helmet from "helmet";
@@ -48,20 +50,27 @@ app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => 
   handleError(err, res);
 });
 
-//Db connection
-mongoose
-  .connect(dbUrl, {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    const port = Number(process.env.PORT || 3000);
+createConnection().then(async connection => {
+  const port = Number(process.env.PORT || 3000);
     app.listen(port, () => {
       logger.info("Express server started on port: " + port);
     });
-  })
-  .catch(() => console.log("database connection failed"));
+}).catch((error) => console.log("database connection failed error : " + error));
+
+//Db connection
+// mongoose
+//   .connect(dbUrl, {
+//     useNewUrlParser: true,
+//     useFindAndModify: false,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => {
+//     const port = Number(process.env.PORT || 3000);
+//     app.listen(port, () => {
+//       logger.info("Express server started on port: " + port);
+//     });
+//   })
+//   .catch(() => console.log("database connection failed"));
 
 // Export express instance
 export default app;

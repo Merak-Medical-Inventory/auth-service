@@ -2,14 +2,9 @@ import Joi from '@hapi/joi';
 
 export const createUserSchema = Joi.object().keys({
     username: Joi.string().required(),
+    password: Joi.string().required(),
     name: Joi.string().required(),
     last_name: Joi.string().required(),
-    email: Joi.string().email().required(),
-    recovery_email: Joi.string().email(),
-    password: Joi.string().required(),
-    phone: Joi.string(),
-    profile_image: Joi.string(),
-    isEnabled: Joi.boolean()
   });
   
   export const updateUserSchema = Joi.object().keys({

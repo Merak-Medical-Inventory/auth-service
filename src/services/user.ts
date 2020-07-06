@@ -1,7 +1,9 @@
-import { createUser, findUser, findAllUsers, updateUser } from '@models/user/UserDao';
+import { findAllUsers, updateUser } from '@models/user/UserDao';
+import {findUser} from '@db/entity/user/UserDao';
+import { createUser } from '@db/entity/user/UserDao';
 import { IUser } from '@models/user/User'
 
-export const createUserSvc = async (user : IUser) =>{
+export const createUserSvc = async (user : any) =>{
     try{
         return await createUser(user)
     }catch(e){
@@ -10,9 +12,9 @@ export const createUserSvc = async (user : IUser) =>{
     }
 }
 
-export const findUserSvc = async (criteria: any, projection: any = {}, options: any = {}) => {
+export const findUserSvc = async (username: any) => {
     try {
-      return await findUser(criteria, projection, options);
+      return await findUser(username);
     } catch (e) {
       console.error('TCL: findUserSvc -> e', e);
       throw e;

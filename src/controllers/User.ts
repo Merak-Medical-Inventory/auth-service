@@ -11,7 +11,7 @@ interface IRequest extends Request {
 }
 
 export const createUserCtrl = async (req : IRequest , res : Response , next: NextFunction) => {
-    const user: IUser = req.body as unknown as IUser;
+    const user = req.body;
     user.password = await bcrypt.hash(user.password, 10);
     try{
         const data =  await createUserSvc(user);
