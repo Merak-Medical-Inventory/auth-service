@@ -2,6 +2,7 @@ import Joi from '@hapi/joi';
 
 export const createUserSchema = Joi.object().keys({
     username: Joi.string().required(),
+    email: Joi.string().required(),
     password: Joi.string().required(),
     name: Joi.string().required(),
     last_name: Joi.string().required(),

@@ -18,9 +18,11 @@ export const login = async (req : Request , res : Response , next: NextFunction)
     if (!valid) throw new ErrorHandler(400, 'WRONG_USER_PASSWORD');
     const response = {
       id : data.id,
+      username : data.username,
+      email: data.email,
       name : data.name,
-      last_name : data.last_name 
-    } 
+      last_name : data.last_name
+    }
     const jwtInfo = await jwtSign(response)
     handleSuccess(201, 'LOGIN SUCCESS', res, next, { response, token: jwtInfo });
   }catch (e){
