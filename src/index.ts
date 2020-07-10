@@ -18,6 +18,7 @@ import { handleError, ErrorHandler } from '@helpers/ErrorHandler'
 const app = express();
 // Db URL
 const dbUrl: any = process.env.DB;
+const cors = require('cors');
 
 /************************************************************************************
  *                              Set basic express settings
@@ -26,6 +27,7 @@ const dbUrl: any = process.env.DB;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors());
 
 // Show routes called in console during development
 if (process.env.NODE_ENV === "development") {
