@@ -37,46 +37,13 @@ export const updateUserCtrl = async (req: IRequest, res: Response, next: NextFun
 };
 
 export const getProfileCtrl = async (req: IRequest, res: Response, next: NextFunction) => {
-    const id = process.env.CURRENT_USER_ID;
-    const criteria = {
-      _id: id,
-      isEnabled: true
-    };
+    const username = req.body.username;
     try {
-      const data = await findUserSvc(criteria);
+      const data = await findUserSvc(username);
       handleSuccess(200, 'User information', res, next, data);
     } catch (e) {
       console.error('ERROR: controller -> getProfileCtrl', e);
       next(e);
     }
   };
-  
-
-export const getUserCtrl = async (req: IRequest, res: Response, next: NextFunction) => {
-  const { id } = req.params;
-  const criteria = {
-    _id: id,
-    isEnabled: true
-  };
-  try {
-    const data = await findUserSvc(criteria);
-    handleSuccess(200, 'User information', res, next, data);
-  } catch (e) {
-    console.error('ERROR: controller -> getUserCtrl', e);
-    next(e);
-  }
-};
-
-export const getAllUserCtrl = async (_req: IRequest, res: Response, next: NextFunction) => {
-  const criteria = {
-    isEnabled: true
-  };
-  try {
-    const data = await findAllUsersSvc(criteria);
-    handleSuccess(200, 'User list', res, next, data);
-  } catch (e) {
-    console.error('ERROR: controller -> getAllUserCtrl', e.message);
-    next(e);
-  }
-};
 

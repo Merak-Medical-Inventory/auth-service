@@ -1,5 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import Privilege from "../Privilege/Privilege";
 @Entity()
 export class User {
 
@@ -24,6 +24,9 @@ export class User {
 
     @Column()
     last_name: string;
+
+    @ManyToOne(type => Privilege, privilege => privilege.users)
+    privilege: Privilege;
 }
 
 export default User

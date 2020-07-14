@@ -1,11 +1,10 @@
 import { findAllUsers, updateUser } from '@models/user/UserDao';
 import {findUser} from '@db/entity/user/UserDao';
 import { createUser } from '@db/entity/user/UserDao';
-import { IUser } from '@models/user/User'
 
 export const createUserSvc = async (user : any) =>{
     try{
-        return await createUser(user)
+        return await createUser(user);
     }catch(e){
         console.error('TCL: createUserSvc -> e', e);
         throw e;

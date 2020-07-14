@@ -12,6 +12,7 @@ export const login = async (req : Request , res : Response , next: NextFunction)
   const { username, password } = req.body;
   try{
     const data = await findUserSvc(username);
+    console.log(data);
     if (!data) throw new ErrorHandler(400, 'WRONG_USER_PASSWORD');
     const hashPass = data.password;
     const valid = await bcrypt.compare(password, hashPass);
@@ -21,7 +22,8 @@ export const login = async (req : Request , res : Response , next: NextFunction)
       username : data.username,
       email: data.email,
       name : data.name,
-      last_name : data.last_name
+      last_name : data.last_name,
+      privilege : data.privilege
     }
     const jwtInfo = await jwtSign(response)
     handleSuccess(201, 'LOGIN SUCCESS', res, next, { response, token: jwtInfo });
