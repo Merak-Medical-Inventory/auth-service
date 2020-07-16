@@ -3,14 +3,10 @@ import User from "@db/entity/user/User";
 import { findPrivilege } from "@db/entity/Privilege/PrivilegeDao";
 import { ErrorHandler } from "@helpers/ErrorHandler";
 
-export const findUser = async (username: string) => {
+export const findUser = async (criteria: string) => {
   try {
     const userRepository = getManager().getRepository(User);
-    return await userRepository
-      .createQueryBuilder("user")
-      .leftJoinAndSelect("user.privilege", "privilege")
-      .where("user.username = :username", { username: username })
-      .getOne();
+    return await userRepository.findOne(criteria)
   } catch (error) {
     throw new ErrorHandler(500, `${error.name} ${error.message}`);
   }

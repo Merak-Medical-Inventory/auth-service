@@ -11,8 +11,7 @@ import { findUserSvc } from '@services/user'
 export const login = async (req : Request , res : Response , next: NextFunction) =>{
   const { username, password } = req.body;
   try{
-    const data = await findUserSvc(username);
-    console.log(data);
+    const data = await findUserSvc({username});
     if (!data) throw new ErrorHandler(400, 'WRONG_USER_PASSWORD');
     const hashPass = data.password;
     const valid = await bcrypt.compare(password, hashPass);

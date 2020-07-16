@@ -10,9 +10,9 @@ export const createUserSvc = async (user: any) => {
   }
 };
 
-export const findUserSvc = async (username: any) => {
+export const findUserSvc = async (criteria: any) => {
   try {
-    return await findUser(username);
+    return await findUser(criteria);
   } catch (e) {
     console.error("TCL: findUserSvc -> e", e);
     throw e;
