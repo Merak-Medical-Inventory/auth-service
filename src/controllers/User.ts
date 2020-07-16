@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { createUserSvc, findUserSvc, updateUserSvc, deleteUserSvc, findAllUserSvc } from "@services/user";
 import { handleSuccess } from "@helpers/succesHandler";
 import { ErrorHandler } from "@helpers/ErrorHandler/";
-import { findAllUser } from '@db/entity/user/UserDao';
+import logger from '@shared/Logger';
 
 interface IRequest extends Request {
   [key: string]: any;
@@ -21,7 +21,7 @@ export const getProfileCtrl = async (
     if(!data) throw new ErrorHandler(404, "User no encontrado");
     handleSuccess(200, "User information", res, next, data);
   } catch (e) {
-    console.error("ERROR: controller -> getProfileCtrl", e);
+    logger.error("ERROR: controller -> getProfileCtrl", e);
     next(e);
   }
 };
@@ -36,7 +36,7 @@ export const getAllUsersCtrl = async (
     const data = await findAllUserSvc({});
     handleSuccess(200, "Users information", res, next, data);
   } catch (e) {
-    console.error("ERROR: controller -> getProfileCtrl", e);
+    logger.error("ERROR: controller -> getProfileCtrl", e);
     next(e);
   }
 };
@@ -52,7 +52,7 @@ export const getUserByIdCtrl = async (
     if(!data) throw new ErrorHandler(404, "User no encontrado");
     handleSuccess(200, "User information", res, next, data);
   } catch (e) {
-    console.error("ERROR: controller -> getProfileCtrl", e);
+    logger.error("ERROR: controller -> getProfileCtrl", e);
     next(e);
   }
 };
@@ -89,7 +89,7 @@ export const updateUserCtrl = async (
       data
     );
   } catch (e) {
-    console.error("ERROR: controller -> createUserCtrl", e);
+    logger.error("ERROR: controller -> updateUserCtrl", e);
     next(e);
   }
 };
@@ -110,7 +110,7 @@ export const deleteUserCtrl = async (
       data
     );
   } catch (e) {
-    console.error("ERROR: controller -> createUserCtrl", e);
+    logger.error("ERROR: controller -> deleteUserCtrl", e);
     next(e);
   }
 };
