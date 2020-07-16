@@ -9,6 +9,38 @@ interface IRequest extends Request {
   [key: string]: any;
 }
 
+export const getProfileCtrl = async (
+  req: IRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const id = process.env.USER_ID
+  try {
+    const data = await findUserSvc({id});
+    if(!data) throw new ErrorHandler(404, "User no encontrado");
+    handleSuccess(200, "User information", res, next, data);
+  } catch (e) {
+    console.error("ERROR: controller -> getProfileCtrl", e);
+    next(e);
+  }
+};
+
+export const getUserByIdCtrl = async (
+  req: IRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const {id} = req.params
+  try {
+    const data = await findUserSvc({id});
+    if(!data) throw new ErrorHandler(404, "User no encontrado");
+    handleSuccess(200, "User information", res, next, data);
+  } catch (e) {
+    console.error("ERROR: controller -> getProfileCtrl", e);
+    next(e);
+  }
+};
+
 export const createUserCtrl = async (
   req: IRequest,
   res: Response,
@@ -42,21 +74,6 @@ export const updateUserCtrl = async (
     );
   } catch (e) {
     console.error("ERROR: controller -> createUserCtrl", e);
-    next(e);
-  }
-};
-
-export const getProfileCtrl = async (
-  req: IRequest,
-  res: Response,
-  next: NextFunction
-) => {
-  const id = process.env.USER_ID
-  try {
-    const data = await findUserSvc({id});
-    handleSuccess(200, "User information", res, next, data);
-  } catch (e) {
-    console.error("ERROR: controller -> getProfileCtrl", e);
     next(e);
   }
 };
