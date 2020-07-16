@@ -19,6 +19,11 @@ export const sessionCheck = async (
       moment().unix() >= get(tokenPayload, "exp")
     )
       throw new ErrorHandler(401, "UNAUTHORIZED");
+    // guarda los datos del usuario que esta haciendo la llamada como variables de entorno
+    process.env.USER_ID = tokenPayload.id;
+    process.env.USER_USERNAME = tokenPayload.username;
+    process.env.USER_EMAIL = tokenPayload.email;
+    console.log(tokenPayload);
     next();
   } catch (e) {
     next(e);

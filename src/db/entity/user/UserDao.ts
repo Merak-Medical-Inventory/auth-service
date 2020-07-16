@@ -43,8 +43,8 @@ export const updateUser = async (id: any, dataToUpdate: any) => {
 export const deleteUser = async (id: any) => {
   try {
     const userRepository = getManager().getRepository(User);
-    await userRepository.delete({id});
-    return id;
+    const data = await userRepository.delete({id});
+    return {usersDeleted : data.affected};
   } catch (error) {
     throw new ErrorHandler(500, `${error.name} ${error.message}`);
   }

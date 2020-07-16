@@ -1,4 +1,4 @@
-import { findUser, updateUser } from "@db/entity/user/UserDao";
+import { findUser, updateUser, deleteUser } from "@db/entity/user/UserDao";
 import { createUser } from "@db/entity/user/UserDao";
 
 export const createUserSvc = async (user: any) => {
@@ -22,6 +22,15 @@ export const findUserSvc = async (username: any) => {
 export const updateUserSvc = async (id: any, dataToUpdate: any = {}) => {
   try {
     return await updateUser(id, dataToUpdate);
+  } catch (e) {
+    console.error("TCL: updateUserSvc -> e", e);
+    throw e;
+  }
+};
+
+export const deleteUserSvc = async (id: any) => {
+  try {
+    return await deleteUser(id);
   } catch (e) {
     console.error("TCL: updateUserSvc -> e", e);
     throw e;
