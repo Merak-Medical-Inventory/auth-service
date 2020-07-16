@@ -8,6 +8,7 @@ import { createUserCtrl,updateUserCtrl, getProfileCtrl} from '@controllers/User'
 const router = Router();
 
 router.post('/' , [joiValidator(createUserSchema)], createUserCtrl);
+router.put('/:id', [joiValidator(updateUserSchema),updateUserCtrl])
 router.get('/profile', getProfileCtrl);
 
 export default router;

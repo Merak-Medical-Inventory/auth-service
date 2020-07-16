@@ -1,8 +1,7 @@
 import { Request, Response , NextFunction } from 'express';
 import bcrypt from 'bcryptjs'
 
-import { IUser } from '@models/user/User'
-import { createUserSvc, findUserSvc, findAllUsersSvc, updateUserSvc } from '@services/user'
+import { createUserSvc, findUserSvc, updateUserSvc } from '@services/user'
 import { handleSuccess } from '@helpers/succesHandler'
 import { ErrorHandler } from '@helpers/ErrorHandler/'
 
@@ -24,12 +23,9 @@ export const createUserCtrl = async (req : IRequest , res : Response , next: Nex
 export const updateUserCtrl = async (req: IRequest, res: Response, next: NextFunction) => {
   const update = req.body;
   const { id } = req.params;
-  const criteria = {
-    _id: id
-  };
   try {
-    const data = await updateUserSvc(criteria, update);
-    handleSuccess(201, 'User Updated Successfully', res, next, data);
+    const data = await updateUserSvc(id, update);
+    handleSuccess(201, 'Usuario actualizado satisfactoriamente', res, next, data);
   } catch (e) {
     console.error('ERROR: controller -> createUserCtrl', e);
     next(e);
