@@ -25,7 +25,7 @@ export class User {
     @Column()
     last_name: string;
 
-    @ManyToOne(type => Privilege, privilege => privilege.users)
+    @ManyToOne(type => Privilege, privilege => privilege.users, { onDelete: 'CASCADE' })
     privilege: Privilege;
 }
 

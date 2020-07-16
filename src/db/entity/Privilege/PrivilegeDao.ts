@@ -12,11 +12,31 @@ export const createPrivilege = async (privilege: any) => {
   }
 };
 
+export const findAllPrivilege = async (criteria: any) => {
+  try {
+    const privilegeRepository = getManager().getRepository(Privilege);
+    const privilege = await privilegeRepository.find({where : criteria});
+    return privilege;
+  } catch (error) {
+    throw new ErrorHandler(500, `${error.name} ${error.message}`);
+  }
+};
+
 export const findPrivilege = async (criteria: any) => {
   try {
-    const userRepository = getManager().getRepository(Privilege);
-    const privilege = await userRepository.findOne({where : criteria});
+    const privilegeRepository = getManager().getRepository(Privilege);
+    const privilege = await privilegeRepository.findOne({where : criteria});
     return privilege;
+  } catch (error) {
+    throw new ErrorHandler(500, `${error.name} ${error.message}`);
+  }
+};
+
+export const deletePrivilege = async (id: any) => {
+  try {
+    const privilegeRepository = getManager().getRepository(Privilege);
+    const privilege = await privilegeRepository.delete({id});
+    return {privilegesDeleted : privilege.affected};
   } catch (error) {
     throw new ErrorHandler(500, `${error.name} ${error.message}`);
   }
