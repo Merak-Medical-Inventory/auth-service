@@ -1,4 +1,4 @@
-import { createPrivilege, findPrivilege, findAllPrivilege } from "@db/entity/Privilege/PrivilegeDao";
+import { createPrivilege, findPrivilege, findAllPrivilege, deletePrivilege } from "@db/entity/Privilege/PrivilegeDao";
 import logger from '@shared/Logger';
 
 export const createPrivilegeSvc = async (privilege: any) => {
@@ -27,4 +27,3 @@ export const findPrivilegeSvc = async (criteria: any) => {
     throw e;
   }
 };
-

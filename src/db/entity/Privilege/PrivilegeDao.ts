@@ -31,3 +31,13 @@ export const findPrivilege = async (criteria: any) => {
     throw new ErrorHandler(500, `${error.name} ${error.message}`);
   }
 };
+
+export const deletePrivilege = async (id: any) => {
+  try {
+    const privilegeRepository = getManager().getRepository(Privilege);
+    const privilege = await privilegeRepository.delete({id});
+    return {privilegesDeleted : privilege.affected};
+  } catch (error) {
+    throw new ErrorHandler(500, `${error.name} ${error.message}`);
+  }
+};
