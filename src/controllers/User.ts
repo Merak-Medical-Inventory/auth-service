@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcryptjs";
 
-import { createUserSvc, findUserSvc, updateUserSvc, deleteUserSvc } from "@services/user";
+import { createUserSvc, findUserSvc, updateUserSvc, deleteUserSvc, findAllUserSvc } from "@services/user";
 import { handleSuccess } from "@helpers/succesHandler";
 import { ErrorHandler } from "@helpers/ErrorHandler/";
+import { findAllUser } from '@db/entity/user/UserDao';
 
 interface IRequest extends Request {
   [key: string]: any;
@@ -19,6 +20,21 @@ export const getProfileCtrl = async (
     const data = await findUserSvc({id});
     if(!data) throw new ErrorHandler(404, "User no encontrado");
     handleSuccess(200, "User information", res, next, data);
+  } catch (e) {
+    console.error("ERROR: controller -> getProfileCtrl", e);
+    next(e);
+  }
+};
+
+export const getAllUsersCtrl = async (
+  req: IRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const id = process.env.USER_ID
+  try {
+    const data = await findAllUserSvc({});
+    handleSuccess(200, "Users information", res, next, data);
   } catch (e) {
     console.error("ERROR: controller -> getProfileCtrl", e);
     next(e);
