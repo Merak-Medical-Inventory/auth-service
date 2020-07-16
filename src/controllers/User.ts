@@ -51,9 +51,9 @@ export const getProfileCtrl = async (
   res: Response,
   next: NextFunction
 ) => {
-  const username = req.body.username;
+  const id = process.env.USER_ID
   try {
-    const data = await findUserSvc(username);
+    const data = await findUserSvc({id});
     handleSuccess(200, "User information", res, next, data);
   } catch (e) {
     console.error("ERROR: controller -> getProfileCtrl", e);

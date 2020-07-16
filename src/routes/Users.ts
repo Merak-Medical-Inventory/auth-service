@@ -8,7 +8,7 @@ import { sessionCheck } from '@middlewares/sessionCheck';
 
 const router = Router();
 
-router.get('/profile', getProfileCtrl);
+router.get('/profile',[sessionCheck], getProfileCtrl);
 router.post('/' , [joiValidator(createUserSchema)], createUserCtrl);
 router.put('/:id', [joiValidator(updateUserSchema),updateUserCtrl]);
 router.delete('/:id',[sessionCheck], deleteUserCtrl)
