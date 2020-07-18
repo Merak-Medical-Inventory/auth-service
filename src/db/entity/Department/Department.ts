@@ -1,9 +1,14 @@
 import {Entity, PrimaryGeneratedColumn, Column} from 'typeorm';
 @Entity()
-export class Category {
+export class Department {
 
     @PrimaryGeneratedColumn()
     id: number;
+
+    @Column({
+        unique: true
+    })
+    code: string;
 
     @Column()
     name: string;
@@ -12,4 +17,4 @@ export class Category {
     description: string;
 }
 
-export default Category
+export default Department
