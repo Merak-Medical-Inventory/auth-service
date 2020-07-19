@@ -1,4 +1,10 @@
-import {createDepartment, findDepartment, findAllDepartments} from '@db/entity/Department/DepartmentDao';
+import {
+    createDepartment,
+    findDepartment,
+    findAllDepartments,
+    updateDepartment, deleteDepartment
+} from '@db/entity/Department/DepartmentDao';
+import logger from '@shared/Logger';
 
 export const createDepartmentSvc = async (Department: any) => {
     try {
@@ -23,6 +29,24 @@ export const findAllDepartmentsSvc = async () => {
         return await findAllDepartments();
     } catch (e) {
         console.error('TCL: findAllDepartmentsSvc -> e', e);
+        throw e;
+    }
+};
+
+export const updateDepartmentSvc = async (id: any, dataToUpdate: any = {}) => {
+    try {
+        return await updateDepartment(id, dataToUpdate);
+    } catch (e) {
+        logger.error('TCL: updateDepartmentSvc -> e', e);
+        throw e;
+    }
+};
+
+export const deleteDepartmentSvc = async (id: any) => {
+    try {
+        return await deleteDepartment(id);
+    } catch (e) {
+        logger.error('TCL: deleteDepartmentSvc -> e', e);
         throw e;
     }
 };

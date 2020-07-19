@@ -36,3 +36,24 @@ export const findAllDepartments = async () => {
         throw new ErrorHandler(500, `${error.name} ${error.message}`);
     }
 };
+
+export const updateDepartment = async (id: any, dataToUpdate: any) => {
+    try {
+        const departmentRepository = getManager().getRepository(Department);
+        const update = await departmentRepository.update(id,{...dataToUpdate });
+        if(update.affected === 0) throw new ErrorHandler(404, 'Department not found');
+        return await departmentRepository.findOne({id});
+    } catch (error) {
+        throw new ErrorHandler(500, `${error.name} ${error.message}`);
+    }
+};
+
+export const deleteDepartment = async (id: any) => {
+    try {
+        const departmentRepository = getManager().getRepository(Department);
+        const data = await departmentRepository.delete({id});
+        return {departmentsDeleted : data.affected};
+    } catch (error) {
+        throw new ErrorHandler(500, `${error.name} ${error.message}`);
+    }
+};
