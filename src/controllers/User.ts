@@ -34,7 +34,7 @@ export const getAllUsersCtrl = async (
   const id = process.env.USER_ID
   try {
     const data = await findAllUserSvc({});
-    handleSuccess(200, "Users information", res, next, data);
+    handleSuccess(200, "Usuarios", res, next, data);
   } catch (e) {
     logger.error("ERROR: controller -> getProfileCtrl", e);
     next(e);
@@ -49,7 +49,7 @@ export const getUserByIdCtrl = async (
   const {id} = req.params
   try {
     const data = await findUserSvc({id});
-    if(!data) throw new ErrorHandler(404, "User no encontrado");
+    if(!data) throw new ErrorHandler(404, "Usuario no encontrado");
     handleSuccess(200, "User information", res, next, data);
   } catch (e) {
     logger.error("ERROR: controller -> getProfileCtrl", e);
@@ -66,7 +66,7 @@ export const createUserCtrl = async (
   user.password = await bcrypt.hash(user.password, 10);
   try {
     const data = await createUserSvc(user);
-    handleSuccess(201, "User created", res, next, data);
+    handleSuccess(201, "Usuario creado", res, next, data);
   } catch (e) {
     next(new ErrorHandler(500, e.message));
   }

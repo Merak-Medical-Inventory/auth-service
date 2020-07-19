@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
-import Privilege from "../Privilege/Privilege";
+import Rol from "../Rol/Rol";
 @Entity()
 export class User {
 
@@ -25,8 +25,8 @@ export class User {
     @Column()
     last_name: string;
 
-    @ManyToOne(type => Privilege, privilege => privilege.users, { onDelete: 'CASCADE' })
-    privilege: Privilege;
+    @ManyToOne(type => Rol, { onDelete: 'CASCADE' })
+    rol: Rol;
 }
 
 export default User

@@ -6,7 +6,10 @@ import { ErrorHandler } from "@helpers/ErrorHandler";
 export const findAllUser = async (criteria: any) => {
   try {
     const userRepository = getManager().getRepository(User);
-    return await userRepository.find(criteria)
+    return await userRepository.find({
+      relations: ["rol"],
+      where: criteria
+  })
   } catch (error) {
     throw new ErrorHandler(500, `${error.name} ${error.message}`);
   }
@@ -15,7 +18,10 @@ export const findAllUser = async (criteria: any) => {
 export const findUser = async (criteria: any) => {
   try {
     const userRepository = getManager().getRepository(User);
-    return await userRepository.findOne(criteria)
+    return await userRepository.findOne({
+      relations: ["rol"],
+      where: criteria
+  })
   } catch (error) {
     throw new ErrorHandler(500, `${error.name} ${error.message}`);
   }
@@ -23,10 +29,7 @@ export const findUser = async (criteria: any) => {
 
 export const createUser = async (user: any) => {
   try {
-    const privilege = await findPrivilege({ id: user.privilegeId });
-    if (!privilege) throw new ErrorHandler(404, "Privilege not found");
     const userRepository = getManager().getRepository(User);
-    user.privilege = privilege;
     await userRepository.save(user);
     return user;
   } catch (error) {

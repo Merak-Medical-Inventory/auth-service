@@ -10,6 +10,6 @@ const router = Router();
 
 router.get('/' , [sessionCheck], getAllPrivilegesCtrl);
 router.get('/:id' , [sessionCheck], getPrivilegeByIdCtrl);
-router.post('/' , [sessionCheck,joiValidator(createPrivilegeSchema)], createPrivilegeCtrl);
+router.post('/' , [joiValidator(createPrivilegeSchema)], createPrivilegeCtrl);
 
 export default router;

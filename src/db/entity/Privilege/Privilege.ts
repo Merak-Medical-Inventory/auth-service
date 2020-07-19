@@ -11,8 +11,8 @@ export class privilege {
   })
   name: string;
 
-  @OneToMany((type) => User, (user) => user.privilege)
-  users: User[];
+  @Column()
+  description: string;
 }
 
 export default privilege;
