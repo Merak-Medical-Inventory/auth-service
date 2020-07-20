@@ -32,8 +32,8 @@
       "@seeds/*": [
         "src/seeds/*"
       ],
-      "@migrations/*": [
-        "src/migrations/*"
+      "@migration/*": [
+        "src/migration/*"
       ],
       "@helpers/*": [
         "src/helpers/*"
