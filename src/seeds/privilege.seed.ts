@@ -1,6 +1,6 @@
 export const PrivilegeSeed = [
   {
-    name: "super user",
+    name: "super usuario",
     description: "privilegio  de super usuario"
   },
   {

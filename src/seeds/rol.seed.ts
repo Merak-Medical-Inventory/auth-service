@@ -1,7 +1,7 @@
 
 export const RolSeed = [
     {
-      name: "super user",
+      name: "super usuario",
       description: "rol de super usuario",
       privileges : ["super user"]
     },
