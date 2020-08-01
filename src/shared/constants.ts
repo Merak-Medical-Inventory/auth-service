@@ -7,6 +7,7 @@ export const createUserSchema = Joi.object().keys({
   name: Joi.string().required(),
   last_name: Joi.string().required(),
   rol: Joi.number().required(),
+  department: Joi.number()
 });
 
 export const updateUserSchema = Joi.object().keys({
@@ -15,7 +16,9 @@ export const updateUserSchema = Joi.object().keys({
   password: Joi.string(),
   name: Joi.string(),
   last_name: Joi.string(),
-  privilegeId: Joi.number(),
+  rol: Joi.number(),
+  department: Joi.number(),
+  privilegeId: Joi.number()
 });
 
 export const paramMissingError =
