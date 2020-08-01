@@ -1,24 +1,23 @@
 
 export const RolSeed = [
     {
-      name: "super usuario",
-      description: "rol de super usuario",
-      privileges : ["super user"]
+      name: "Superusuario",
+      description: "Rol de Superusuario",
+      privileges : ["Superusuario"]
     },
     {
-      name: "administrador de inventarios",
-      description: "rol de administrador de inventarios",
-      privileges : ["pedidos","administrador de inventarios"]
+      name: "Administrador",
+      description: "Rol de Administrador",
+      privileges : ["Pedidos","Administrador"]
     },
     {
-      name: "enfermero",
-      description: "rol de enfermero",
-      privileges: ["equipos medicos"]
+      name: "Enfermero",
+      description: "Rol de Enfermero",
+      privileges: ["Equipos Medicos"]
     },
     {
-      name: "medico",
-      description: "rol de medico",
-      privileges : ["equipos medicos","pedidos"]
+      name: "Medico",
+      description: "Rol de Medico",
+      privileges : ["Equipos Medicos","Pedidos"]
     },
   ];
-  

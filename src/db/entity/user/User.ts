@@ -1,5 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
 import Rol from "../Rol/Rol";
+import Department from '@db/entity/Department/Department';
 @Entity()
 export class User {
 
@@ -27,6 +28,9 @@ export class User {
 
     @ManyToOne(type => Rol, { onDelete: 'CASCADE' })
     rol: Rol;
+
+    @ManyToOne(type => Department,{ nullable: true, onDelete: 'CASCADE' })
+    department: Department;
 }
 
 export default User

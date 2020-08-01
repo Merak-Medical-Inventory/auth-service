@@ -1,18 +1,18 @@
 export const PrivilegeSeed = [
   {
-    name: "super usuario",
-    description: "privilegio  de super usuario"
+    name: "Superusuario",
+    description: "Privilegio  de superusuario"
   },
   {
-    name: "administrador de inventarios",
-    description: "privilegio para permitir la administracion del inventario"
+    name: "Administrador",
+    description: "Privilegio para permitir la administracion del inventario"
   },
   {
-    name: "equipos medicos",
-    description: "privilegio para permitir la administracion de equipos medicos"
+    name: "Equipos Medicos",
+    description: "Privilegio para permitir la administracion de equipos medicos"
   },
   {
-    name: "pedidos",
-    description: "privilegio para permitir la administracion de pedidos"
+    name: "Pedidos",
+    description: "Privilegio para permitir la administracion de pedidos"
   },
 ];
