@@ -1,6 +1,6 @@
 {
   "type": "postgres",
-  "host": "http://merak-inventory.czdwqkwpxkdi.us-east-1.rds.amazonaws.com/",
+  "host": "merak-inventory.czdwqkwpxkdi.us-east-1.rds.amazonaws.com",
   "port": 5432,
   "username": "postgres",
   "password": "postgres",
