@@ -57,7 +57,7 @@ createConnection().then(async connection => {
     app.listen(port, () => {
       logger.info("Express server started on port: " + port);
     });
-}).catch((error) => console.log("database connection failed error : " + error));
+}).catch((error) => console.log(error));
 
 //Db connection
 // mongoose

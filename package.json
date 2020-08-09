@@ -22,7 +22,7 @@
     "exec": "ts-node -r tsconfig-paths/register ./src"
   },
   "_moduleAliases": {
-    "@models": "dist/models",
+    "@db": "dist/db",
     "@server": "dist/"
   },
   "dependencies": {
