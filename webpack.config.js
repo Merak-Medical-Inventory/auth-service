@@ -37,7 +37,10 @@ module.exports = {
       "@shared": path.resolve(__dirname, "src/shared/"),
       "@controllers": path.resolve(__dirname, "src/controllers/"),
       "@db": path.resolve(__dirname, "src/db/"),
-      "@helpers": path.resolve(__dirname, "src/helpers/")
+      "@helpers": path.resolve(__dirname, "src/helpers/"),
+      "@migrations": path.resolve(__dirname, "src/migration/"),
+      "@seeds": path.resolve(__dirname, "src/seeds/"),
+      "@middlewares": path.resolve(__dirname, "src/middlewares/")
     } 
   },
   plugins: [

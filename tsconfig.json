@@ -29,6 +29,12 @@
       "@db/*": [
         "src/db/*"
       ],
+      "@seeds/*": [
+        "src/seeds/*"
+      ],
+      "@migration/*": [
+        "src/migration/*"
+      ],
       "@helpers/*": [
         "src/helpers/*"
       ],
