@@ -22,7 +22,8 @@ export const login = async (req : Request , res : Response , next: NextFunction)
       email: data.email,
       name : data.name,
       last_name : data.last_name,
-      rol : data.rol
+      rol : data.rol,
+      department: data.department
     }
     const jwtInfo = await jwtSign(response)
     handleSuccess(201, 'LOGIN SUCCESS', res, next, { response, token: jwtInfo });

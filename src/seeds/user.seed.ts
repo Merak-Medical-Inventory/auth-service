@@ -5,7 +5,7 @@ export const UserSeed = [
     password: 'superuser',
     name: 'superuser',
     last_name: 'superuser',
-    rol : 'super usuario'
+    rol : 'Superusuario'
   },
   {
     username: 'admin',
@@ -13,7 +13,7 @@ export const UserSeed = [
     password: 'admin',
     name: 'admin',
     last_name: 'admin',
-    rol : 'administrador de inventarios'
+    rol : 'Administrador'
   },
   {
     username: 'enfermero',
@@ -21,7 +21,8 @@ export const UserSeed = [
     password: 'enfermero',
     name: 'enfermero',
     last_name: 'enfermero',
-    rol : 'enfermero'
+    rol : 'Enfermero',
+    department: 'Pediatria'
   },
   {
     username: 'medico',
@@ -29,6 +30,7 @@ export const UserSeed = [
     password: 'medico',
     name: 'medico',
     last_name: 'medico',
-    rol : 'medico'
+    rol : 'Medico',
+    department: 'UCI'
   }
 ];
