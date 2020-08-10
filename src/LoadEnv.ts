@@ -12,4 +12,4 @@ const options = commandLineArgs([
     },
 ]);
 
-options.env === 'production'? dotenv.config() : dotenv.config({path : `./env/${options.env}.env`});
+options.env === dotenv.config({path : `./env/${options.env}.env`});
