@@ -7,12 +7,12 @@
   "database": "merak-inventory",
   "synchronize": true,
   "logging": false,
-  "entities": ["dist/*{.ts,.js}"],
-  "migrations": ["dist/*{.ts,.js}"],
-  "subscribers": ["dist/*{.ts,.js}"],
+  "entities": ["dist/main.bundle.js{.ts,.js}"],
+  "migrations": ["dist/*{.ts,.js}","src/migration/**/*{.ts,.js}"],
+  "subscribers": ["dist/main.bundle.js{.ts,.js}"],
   "cli": {
-    "entitiesDir": ["dist/*{.ts,.js}"],
-    "migrationsDir": ["dist/*{.ts,.js}"],
-    "subscribersDir": ["dist/*{.ts,.js}"]
+    "entitiesDir": ["dist/main.bundle.js{.ts,.js}"],
+    "migrationsDir": ["dist/main.bundle.js{.ts,.js}"],
+    "subscribersDir": ["dist/*{.ts,.js}","dist/main.bundle.js{.ts,.js}"]
   }
 }
