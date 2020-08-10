@@ -12,4 +12,10 @@ const options = commandLineArgs([
     },
 ]);
 
-options.env === dotenv.config({path : `./env/${options.env}.env`});
+const result = dotenv.config({
+    path: `./env/${options.env}.env`,
+});
+
+if (result.error) {
+    throw result.error;
+}
