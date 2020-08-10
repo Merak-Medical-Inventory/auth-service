@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import User from "@db/entity/user/User";
 
-@Entity("privilege")
+@Entity()
 export class privilege {
   @PrimaryGeneratedColumn()
   id: number;
