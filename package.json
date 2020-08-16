@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "lint": "tslint --project \"tsconfig.json\"",
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
+    "heroku-postbuild": "NODE_ENV=production rimraf ./dist/* && webpack",
     "run:prod": "node ./dist/main.bundle.js --env=production",
     "start:dev": "nodemon",
     "test": "nodemon --config ./spec/nodemon.json",
