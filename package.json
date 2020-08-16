@@ -5,7 +5,7 @@
     "build1": "node build.js",
     "build": "NODE_ENV=production rimraf ./dist/* && webpack",
     "lint": "tslint --project \"tsconfig.json\"",
-    "run:prod": "node ./dist/main.bundle.js --env=production",
+    "run:prod": "node /tmp/build_75191e8b_/dist/main.bundle.js --env=production",
     "start": "npm run build",
     "start:dev": "nodemon",
     "test": "nodemon --config ./spec/nodemon.json",
