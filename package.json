@@ -5,7 +5,7 @@
     "build1": "node build.js",
     "build": "NODE_ENV=production rimraf ./dist/* && webpack",
     "lint": "tslint --project \"tsconfig.json\"",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "run:prod": "node ./dist/main.bundle.js --env=production",
     "start": "node ./dist/main.bundle.js --env=production",
     "start:dev": "nodemon",
@@ -23,8 +23,9 @@
     "exec": "ts-node -r tsconfig-paths/register ./src"
   },
   "_moduleAliases": {
-    "@db": "dist/db",
-    "@server": "dist/"
+    "@db": "dist/",
+    "@server": "dist/",
+    "@middlewares" : "dist/"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -47,8 +48,8 @@
     "pg": "^8.2.1",
     "reflect-metadata": "^0.1.13",
     "ts-loader": "^7.0.5",
-    "typeorm": "^0.2.25",
     "tslib": "^2.0.0",
+    "typeorm": "^0.2.25",
     "winston": "^3.2.1"
   },
   "devDependencies": {
