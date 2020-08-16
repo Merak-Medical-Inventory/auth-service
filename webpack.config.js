@@ -43,11 +43,6 @@ module.exports = {
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
-    new WebpackShellPlugin({
-      // when build ends run dev if the environment is development else run prod
-      onBuildEnd:
-        NODE_ENV === "development" ? ["npm run run:dev"] : ["npm run run:prod"],
-    }),
   ],
   module: {
     rules: [
