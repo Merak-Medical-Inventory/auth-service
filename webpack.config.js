@@ -8,6 +8,8 @@ const WebpackShellPlugin = require("webpack-shell-plugin");
 // speed up compilation of code
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+
 const { NODE_ENV = "production" } = process.env;
 
 module.exports = {
@@ -42,6 +44,7 @@ module.exports = {
     },
   },
   plugins: [
+    new CaseSensitivePathsPlugin(),
     new ForkTsCheckerWebpackPlugin(),
   ],
   module: {
