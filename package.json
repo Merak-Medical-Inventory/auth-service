@@ -5,8 +5,9 @@
     "build1": "node build.js",
     "build": "NODE_ENV=production rimraf ./dist/* && webpack",
     "lint": "tslint --project \"tsconfig.json\"",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress",
     "run:prod": "node ./dist/main.bundle.js --env=production",
-    "start": "npm run build",
+    "start": "node ./dist/main.bundle.js --env=production",
     "start:dev": "nodemon",
     "test": "nodemon --config ./spec/nodemon.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
