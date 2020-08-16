@@ -8,11 +8,11 @@ import User from '@db/entity/user/User';
 
 const typeOrmConfig: PostgresConnectionOptions = {
     type: "postgres",
-    host: "merak-inventory.czdwqkwpxkdi.us-east-1.rds.amazonaws.com",
+    host: process.env.DB_HOST,
     port: 5432,
-    username: "postgres",
-    password: "postgres",
-    database: "merak-inventory",
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB,
     synchronize: true,
     logging: false,
     entities: [
