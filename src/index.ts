@@ -54,27 +54,11 @@ app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => 
 });
 
 createConnection(typeOrmConfig).then(async connection => {
-  const port = Number(process.env.PORT || 8080);
+  const port = Number(process.env.PORT || 3000);
     app.listen(port, () => {
       logger.info("Express server started on port: " + port);
     });
 }).catch((error) => console.log(error));
 
-//Db connection
-// mongoose
-//   .connect(dbUrl, {
-//     useNewUrlParser: true,
-//     useFindAndModify: false,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => {
-//     const port = Number(process.env.PORT || 3000);
-//     app.listen(port, () => {
-//       logger.info("Express server started on port: " + port);
-//     });
-//   })
-//   .catch(() => console.log("database connection failed"));
-
-// Export express instance
 export default app;
 
