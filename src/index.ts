@@ -54,7 +54,7 @@ app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => 
 });
 
 createConnection(typeOrmConfig).then(async connection => {
-  const port = Number(process.env.PORT || 3000);
+  const port = Number(process.env.PORT || 8080);
     app.listen(port, () => {
       logger.info("Express server started on port: " + port);
     });
