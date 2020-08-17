@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 import { createUserSchema, updateUserSchema } from '@shared/constants'
-import { joiValidator } from '@middlewares/joi';
+import { joiValidator } from '../middlewares/joi';
 import { createUserCtrl,updateUserCtrl, getProfileCtrl, deleteUserCtrl, getUserByIdCtrl, getAllUsersCtrl} from '@controllers/User'
 import { sessionCheck } from '@middlewares/sessionCheck';
 

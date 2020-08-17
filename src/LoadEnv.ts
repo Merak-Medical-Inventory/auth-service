@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+dotenv.config();
 import commandLineArgs from 'command-line-args';
 
 // Setup command line options
@@ -11,11 +12,10 @@ const options = commandLineArgs([
     },
 ]);
 
-// Set the env file
-const result2 = dotenv.config({
+const result = dotenv.config({
     path: `./env/${options.env}.env`,
 });
 
-if (result2.error) {
-    throw result2.error;
+if (result.error) {
+    throw result.error;
 }

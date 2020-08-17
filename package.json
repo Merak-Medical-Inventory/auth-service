@@ -2,11 +2,9 @@
   "name": "pic-album-backend-template",
   "version": "1.0.0",
   "scripts": {
-    "build1": "node build.js",
-    "build": "NODE_ENV=production rimraf ./dist/* && webpack",
     "lint": "tslint --project \"tsconfig.json\"",
+    "heroku-postbuild": "NODE_ENV=production rimraf ./dist/* && webpack",
     "run:prod": "node ./dist/main.bundle.js --env=production",
-    "start": "npm run build",
     "start:dev": "nodemon",
     "test": "nodemon --config ./spec/nodemon.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
@@ -22,8 +20,9 @@
     "exec": "ts-node -r tsconfig-paths/register ./src"
   },
   "_moduleAliases": {
-    "@models": "dist/models",
-    "@server": "dist/"
+    "@db": "dist/",
+    "@server": "dist/",
+    "@middlewares": "dist/"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -32,6 +31,7 @@
     "bcryptjs": "^2.4.3",
     "command-line-args": "^5.1.1",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
@@ -46,8 +46,8 @@
     "pg": "^8.2.1",
     "reflect-metadata": "^0.1.13",
     "ts-loader": "^7.0.5",
-    "typeorm": "^0.2.25",
     "tslib": "^2.0.0",
+    "typeorm": "^0.2.25",
     "winston": "^3.2.1"
   },
   "devDependencies": {
@@ -65,7 +65,7 @@
     "@types/morgan": "^1.9.0",
     "@types/node": "^14.0.12",
     "@types/supertest": "^2.0.9",
-    "cors": "^2.8.5",
+    "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "find": "^0.3.0",
     "fork-ts-checker-webpack-plugin": "^5.0.4",
     "fs-extra": "^9.0.1",
@@ -81,5 +81,8 @@
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^1.7.2",
     "webpack-shell-plugin": "^0.5.0"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }

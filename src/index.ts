@@ -13,6 +13,7 @@ import mongoose from "mongoose";
 import BaseRouter from "./routes";
 import logger from "@shared/Logger";
 import { handleError, ErrorHandler } from '@helpers/ErrorHandler'
+import { typeOrmConfig } from './config';
 
 // Init express
 const app = express();
@@ -52,28 +53,12 @@ app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => 
   handleError(err, res);
 });
 
-createConnection().then(async connection => {
+createConnection(typeOrmConfig).then(async connection => {
   const port = Number(process.env.PORT || 3000);
     app.listen(port, () => {
       logger.info("Express server started on port: " + port);
     });
-}).catch((error) => console.log("database connection failed error : " + error));
+}).catch((error) => console.log(error));
 
-//Db connection
-// mongoose
-//   .connect(dbUrl, {
-//     useNewUrlParser: true,
-//     useFindAndModify: false,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => {
-//     const port = Number(process.env.PORT || 3000);
-//     app.listen(port, () => {
-//       logger.info("Express server started on port: " + port);
-//     });
-//   })
-//   .catch(() => console.log("database connection failed"));
-
-// Export express instance
 export default app;
 
