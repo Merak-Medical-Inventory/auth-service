@@ -1,5 +1,10 @@
 export const DepartmentSeed = [
     {
+        code: "001",
+        name: "Principal",
+        description: "Principal"
+    },
+    {
         code: "A01",
         name: "UCI",
         description: "Unidad de Cuidados Intensivos"

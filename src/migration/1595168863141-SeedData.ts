@@ -8,6 +8,8 @@ import User from "@db/entity/user/User";
 import bcrypt from "bcryptjs";
 import Department from '@db/entity/Department/Department';
 import {DepartmentSeed} from '@seeds/department.seed';
+import Inventory from '@db/entity/Inventory/Inventory';
+import { principalInventory } from '@seeds/inventory.seed';
 
 export class SeedData1595168863141 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -23,7 +25,10 @@ export class SeedData1595168863141 implements MigrationInterface {
     await getRepository(Department).save(DepartmentSeed);
     const departmentRepository = getRepository(Department);
     const userRepository = getRepository(User);
-    const rols =  await rolRepository.find();
+    const inventoryRepository = getRepository(Inventory);
+    const principalDepartment = await departmentRepository.findOne({code : "001"});
+    principalInventory.deparment = principalDepartment;
+    await inventoryRepository.save(principalInventory);
     for await (const user of UserSeed) {
       const mockUser: any = user;
       const rol = await rolRepository.findOne({name:user.rol});
