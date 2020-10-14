@@ -13,7 +13,7 @@ import Provider from '@db/entity/Provider/Provider';
 import Order, { Lot } from '@db/entity/Lot/Lot';
 import OrderToItem from '@db/entity/OrderToItem/OrderToItem';
 import Stock from '@db/entity/Stock/Stock';
-import LotToStock from '@db/entity/LotToStock.ts/LotToStock';
+import LotToStock from '@db/entity/LotToStock/LotToStock';
 import Inventory from '@db/entity/Inventory/Inventory';
 
 
