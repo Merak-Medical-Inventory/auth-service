@@ -10,7 +10,6 @@ export class Lot {
     @PrimaryGeneratedColumn()
     id: number;
 
-
     @Column({nullable: true})
     dueDate: Date;
 
