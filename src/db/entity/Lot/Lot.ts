@@ -11,9 +11,6 @@ export class Lot {
     id: number;
 
 
-    @Column()
-    name: string;
-
     @Column({nullable: true})
     dueDate: Date;
 
