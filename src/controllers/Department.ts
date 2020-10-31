@@ -9,6 +9,7 @@ import {
 import { handleSuccess } from '@helpers/succesHandler';
 import { ErrorHandler } from '@helpers/ErrorHandler/';
 import logger from '@shared/Logger';
+import Department from '@db/entity/Department/Department';
 
 interface IRequest extends Request {
     [key: string]: any;
@@ -17,7 +18,7 @@ interface IRequest extends Request {
 export const createDepartmentCtrl = async (req : IRequest , res : Response , next: NextFunction) => {
     const Department = req.body;
     try{
-        const data =  await createDepartmentSvc(Department);
+        const data : Department =  await createDepartmentSvc(Department);
         handleSuccess(201, 'Departamento Creado', res, next,data);
     }catch (e){
         next(new ErrorHandler(500, e.message));

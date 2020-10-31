@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, getRepository } from "typeorm";
+import { MigrationInterface, QueryRunner, getRepository, getManager } from "typeorm";
 import { PrivilegeSeed } from "@seeds/privilege.seed";
 import { RolSeed } from "@seeds/rol.seed";
 import { UserSeed } from "@seeds/user.seed";
@@ -22,13 +22,22 @@ export class SeedData1595168863141 implements MigrationInterface {
       );
       await rolRepository.save(mockRol);
     }
-    await getRepository(Department).save(DepartmentSeed);
     const departmentRepository = getRepository(Department);
     const userRepository = getRepository(User);
     const inventoryRepository = getRepository(Inventory);
-    const principalDepartment = await departmentRepository.findOne({code : "001"});
-    principalInventory.deparment = principalDepartment;
-    await inventoryRepository.save(principalInventory);
+    for await (const deparment of DepartmentSeed) {
+      const newDeparment = new Department();
+      newDeparment.code = deparment.code;
+      newDeparment.name = deparment.name;
+      newDeparment.description = deparment.description;
+      await departmentRepository.save(newDeparment);
+      const newInventory = new Inventory();
+      newInventory.deparment = newDeparment;
+      newInventory.id = deparment.inventory.id;
+      newInventory.name = deparment.inventory.name;
+      newInventory.description = deparment.inventory.description;
+      await inventoryRepository.save(newInventory)
+    }
     for await (const user of UserSeed) {
       const mockUser: any = user;
       const rol = await rolRepository.findOne({name:user.rol});

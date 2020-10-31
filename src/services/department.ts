@@ -5,13 +5,24 @@ import {
     updateDepartment, deleteDepartment
 } from '@db/entity/Department/DepartmentDao';
 import logger from '@shared/Logger';
+import Inventory from '@db/entity/Inventory/Inventory';
+import { getManager, EntityManager } from 'typeorm';
+import Department from '@db/entity/Department/Department';
+import { ErrorHandler } from '@helpers/ErrorHandler';
 
-export const createDepartmentSvc = async (Department: any) => {
+export const createDepartmentSvc = async (Department: Department) : Promise<Department>  => {
     try {
-        return await createDepartment(Department);
+        const manager : EntityManager = getManager();
+        const deparment : Department = await createDepartment(Department);
+        const inventory : Inventory = new Inventory();
+        inventory.deparment = deparment;
+        inventory.name = `Inventario del departamento ${deparment.description}`
+        inventory.description = `Inventario del departamento ${deparment.description}`
+        await manager.save(inventory);
+        return deparment;
     } catch (e) {
         console.error('TCL: createDepartmentSvc -> e', e);
-        throw e;
+        throw new ErrorHandler(500,'Unknown Error while creating a new deparment');
     }
 };
 
