@@ -19,7 +19,7 @@ export const findUser = async (criteria: any) => {
   try {
     const userRepository = getManager().getRepository(User);
     return await userRepository.findOne({
-      relations: ['rol', 'department'],
+      relations: ['rol', 'department', 'department.inventory'],
       where: criteria
   })
   } catch (error) {
