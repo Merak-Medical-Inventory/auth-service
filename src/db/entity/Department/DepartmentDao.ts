@@ -2,7 +2,7 @@ import { getManager, getConnection } from 'typeorm';
 import { Department} from '@db/entity/Department/Department';
 import { ErrorHandler } from '@helpers/ErrorHandler';
 
-export const createDepartment = async (department: any) => {
+export const createDepartment = async (department: any) : Promise<Department> => {
     try {
         const departmentRepository = getManager().getRepository(Department);
         await departmentRepository.save(department);
