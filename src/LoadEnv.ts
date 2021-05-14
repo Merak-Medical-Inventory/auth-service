@@ -2,7 +2,6 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import commandLineArgs from 'command-line-args';
 
-// Setup command line options
 const options = commandLineArgs([
     {
         name: 'env',

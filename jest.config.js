@@ -1,7 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
   roots: [
-    "<rootDir>/src"
+    "<rootDir>"
   ],
   testMatch: [
     "**/__tests__/**/*.+(ts|tsx|js)",
@@ -19,14 +19,21 @@ module.exports = {
   verbose : true,
   coverageThreshold : {
     global : {
-      branches : 100,
-      functions : 100,
-      lines : 100,
-      statements : 100
+      branches : 70,
+      functions : 70,
+      lines :70,
+      statements : 70
     }
   },
   moduleNameMapper: {
-    "^@entity/(.*)$": "<rootDir>/src/db/entity$1",
-    "^@db/(.*)$": "<rootDir>/src/db$1",
+    "^@entity/(.*)$": "<rootDir>/src/db/entity/$1",
+    "^@db/(.*)$": "<rootDir>/src/db/$1",
+    "^@services/(.*)$": "<rootDir>/src/services/$1",
+    "^@helpers/(.*)$": "<rootDir>/src/helpers/$1",
+    "^@middlewares/(.*)$": "<rootDir>/src/middlewares/$1",
+    "^@seeds/(.*)$": "<rootDir>/src/seeds/$1",
+    "^@controllers/(.*)$": "<rootDir>/src/controllers/$1",
+    "^@shared/(.*)$": "<rootDir>/src/shared/$1",
+    "^@migration/(.*)$": "<rootDir>/src/migration/$1",
   } 
 };

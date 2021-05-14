@@ -1,5 +1,5 @@
 import { createConnection , getConnection } from 'typeorm';
-import { typeOrmConfig } from './config';
+
 
 export default class Connection {
     private config : any;
