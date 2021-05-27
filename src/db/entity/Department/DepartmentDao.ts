@@ -22,7 +22,6 @@ export const findDepartment = async (id: number) => {
             .getOne();
         return department;
     } catch (error) {
-        console.log(id);
         throw new ErrorHandler(500, `${error.name} ${error.message}`);
     }
 };

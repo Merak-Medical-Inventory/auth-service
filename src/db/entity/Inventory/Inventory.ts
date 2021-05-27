@@ -13,10 +13,10 @@ export class Inventory {
     @Column()
     description: string;
 
-    @ManyToOne(type => Department)
+    @ManyToOne(type => Department,{ onDelete: 'CASCADE' })
     deparment!: Department;
 
-    @OneToMany(type => Stock, stock => stock.inventory)
+    @OneToMany(type => Stock, stock => stock.inventory,{ onDelete: 'CASCADE' })
     stock: Stock[];
 }
 

@@ -10,7 +10,6 @@ interface IRequest extends Request {
 export const createRolCtrl = async (req : IRequest , res : Response , next: NextFunction) => {
     const rol = req.body;
     try{
-        console.log(rol)
         const data =  await createRolSvc(rol);
         handleSuccess(201, 'Rol creado', res, next,data);
     }catch (e){

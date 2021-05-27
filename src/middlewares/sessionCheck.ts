@@ -23,7 +23,6 @@ export const sessionCheck = async (
     process.env.USER_ID = tokenPayload.id;
     process.env.USER_USERNAME = tokenPayload.username;
     process.env.USER_EMAIL = tokenPayload.email;
-    console.log(tokenPayload);
     next();
   } catch (e) {
     next(e);
