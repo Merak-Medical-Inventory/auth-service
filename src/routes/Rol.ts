@@ -8,8 +8,8 @@ import { createRolCtrl, getAllRolsCtrl, getRolByIdCtrl } from '@controllers/Rol'
 
 const router = Router();
 
-router.get('/' , [], getAllRolsCtrl);
-router.get('/:id' , [], getRolByIdCtrl);
-router.post('/' , [joiValidator(createRolSchema)], createRolCtrl);
+router.get('/' , [sessionCheck], getAllRolsCtrl);
+router.get('/:id' , [sessionCheck], getRolByIdCtrl);
+router.post('/' , [sessionCheck,joiValidator(createRolSchema)], createRolCtrl);
 
 export default router;
